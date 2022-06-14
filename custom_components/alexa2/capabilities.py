@@ -438,6 +438,7 @@ class AlexaCookingTimeController(AlexaCapability):
         """Return configuration object.
         TODO
         """
+        configuration = {}
         configuration["supportsRemoteStart"] = True
         configuration["supportedCookingModes"] = ["REHEAT"]
 
