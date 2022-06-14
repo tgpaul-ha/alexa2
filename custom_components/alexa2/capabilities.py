@@ -391,7 +391,7 @@ class AlexaPowerController(AlexaCapability):
         return "ON" if is_on else "OFF"
 
 
-    class AlexaCookingTimeController(AlexaCapability):
+class AlexaCookingTimeController(AlexaCapability):
     """Implements Alexa.Cooking.TimeController.
 
     https://developer.amazon.com/en-US/docs/alexa/device-apis/alexa-cooking-timecontroller.html
