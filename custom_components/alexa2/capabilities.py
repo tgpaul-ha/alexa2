@@ -416,7 +416,7 @@ class AlexaCookingTimeController(AlexaCapability):
 
     def properties_supported(self):
         """Return what properties this entity supports."""
-        return []
+        return [{"name": "requestedCookTime"}]
 
     def properties_proactively_reported(self):
         """Return True if properties asynchronously reported."""
