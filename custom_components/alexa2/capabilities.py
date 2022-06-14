@@ -428,7 +428,10 @@ class AlexaCookingTimeController(AlexaCapability):
 
     def get_property(self, name):
         """Read and return a property."""
-        raise UnsupportedProperty(name)
+        if name != "requestedCookTime":
+            raise UnsupportedProperty(name)
+        
+        return "PT3M15S"
 
 
 class AlexaLockController(AlexaCapability):
