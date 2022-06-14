@@ -433,6 +433,15 @@ class AlexaCookingTimeController(AlexaCapability):
         
         return "PT3M15S"
 
+    
+    def configuration(self):
+        """Return configuration object.
+        TODO
+        """
+        configuration["supportsRemoteStart"] = True
+        configuration["supportedCookingModes"] = ["REHEAT"]
+
+        return configuration
 
 class AlexaLockController(AlexaCapability):
     """Implements Alexa.LockController.
