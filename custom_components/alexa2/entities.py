@@ -54,6 +54,7 @@ from .capabilities import (
     AlexaColorController,
     AlexaColorTemperatureController,
     AlexaContactSensor,
+    AlexaCookingTimeController,
     AlexaDoorbellEventSource,
     AlexaEndpointHealth,
     AlexaEqualizerController,
