@@ -391,6 +391,46 @@ class AlexaPowerController(AlexaCapability):
         return "ON" if is_on else "OFF"
 
 
+    class AlexaCookingTimeController(AlexaCapability):
+    """Implements Alexa.Cooking.TimeController.
+
+    https://developer.amazon.com/en-US/docs/alexa/device-apis/alexa-cooking-timecontroller.html
+    """
+
+    supported_locales = {
+        "de-DE",
+        "en-AU",
+        "en-CA",
+        "en-GB",
+        "en-IN",
+        "en-US",
+        "es-ES",
+        "fr-FR",
+        "it-IT",
+        "ja-JP",
+    }
+
+    def name(self):
+        """Return the Alexa API name of this interface."""
+        return "Alexa.Cooking.TimeController"
+
+    def properties_supported(self):
+        """Return what properties this entity supports."""
+        return []
+
+    def properties_proactively_reported(self):
+        """Return True if properties asynchronously reported."""
+        return True
+
+    def properties_retrievable(self):
+        """Return True if properties can be retrieved."""
+        return True
+
+    def get_property(self, name):
+        """Read and return a property."""
+        raise UnsupportedProperty(name)
+
+
 class AlexaLockController(AlexaCapability):
     """Implements Alexa.LockController.
 
