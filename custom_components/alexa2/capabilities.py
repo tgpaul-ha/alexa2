@@ -390,7 +390,59 @@ class AlexaPowerController(AlexaCapability):
 
         return "ON" if is_on else "OFF"
 
+    
+class AlexaCooking(AlexaCapability):
+    """Implements Alexa.Cooking.
 
+    https://developer.amazon.com/en-US/docs/alexa/device-apis/alexa-cooking.html
+    """
+
+    supported_locales = {
+        "de-DE",
+        "en-AU",
+        "en-CA",
+        "en-GB",
+        "en-IN",
+        "en-US",
+        "es-ES",
+        "fr-FR",
+        "it-IT",
+        "ja-JP",
+    }
+
+    def name(self):
+        """Return the Alexa API name of this interface."""
+        return "Alexa.Cooking"
+
+    def properties_supported(self):
+        """Return what properties this entity supports."""
+        return [{"name": "cookingTimeInterval"}]
+
+    def properties_proactively_reported(self):
+        """Return True if properties asynchronously reported."""
+        return True
+
+    def properties_retrievable(self):
+        """Return True if properties can be retrieved."""
+        return True
+
+    def get_property(self, name):
+        """Read and return a property."""
+        if name != "cookingTimeInterval":
+            raise UnsupportedProperty(name)
+        
+        return "PT4M15S"
+    
+    def configuration(self):
+        """Return configuration object.
+        TODO
+        """
+        configuration = {}
+        configuration["supportsRemoteStart"] = True
+        configuration["supportedCookingModes"] = ["REHEAT"]
+
+        return configuration
+    
 class AlexaCookingTimeController(AlexaCapability):
     """Implements Alexa.Cooking.TimeController.
 
