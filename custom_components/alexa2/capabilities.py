@@ -441,7 +441,7 @@ class AlexaCooking(AlexaCapability):
 #        configuration["supportsRemoteStart"] = False
 #        configuration["supportedCookingModes"] = ["REHEAT"]
 
-        return configuration
+#        return configuration
     
 class AlexaCookingTimeController(AlexaCapability):
     """Implements Alexa.Cooking.TimeController.
