@@ -433,15 +433,15 @@ class AlexaCooking(AlexaCapability):
         
         return "PT4M15S"
     
-    def configuration(self):
-        """Return configuration object.
-        TODO
-        """
-        configuration = {}
-        configuration["supportsRemoteStart"] = True
-        configuration["supportedCookingModes"] = ["REHEAT"]
+#    def configuration(self):
+#        """Return configuration object.
+#        TODO
+#        """
+#        configuration = {}
+#        configuration["supportsRemoteStart"] = True
+#        configuration["supportedCookingModes"] = ["REHEAT"]
 
-        return configuration
+#        return configuration
     
 class AlexaCookingTimeController(AlexaCapability):
     """Implements Alexa.Cooking.TimeController.
