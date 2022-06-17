@@ -439,7 +439,7 @@ class AlexaCooking(AlexaCapability):
         """
         configuration = {}
         configuration["supportsRemoteStart"] = False
-        configuration["supportedCookingModes"] = [{"cookingMode": "REHEAT"}]
+#        configuration["supportedCookingModes"] = [{"cookingMode": "REHEAT"}]
 
         return configuration
     
