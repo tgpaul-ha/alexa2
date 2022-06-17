@@ -848,7 +848,7 @@ class TimerCapabilities(AlexaEntity):
 
     def interfaces(self):
         """Yield the supported interfaces."""
-        #yield AlexaCookingTimeController(self.entity)
+        yield AlexaCookingTimeController(self.entity)
         yield AlexaCooking(self.entity)
         yield AlexaTimeHoldController(self.entity, allow_remote_resume=True)
         yield AlexaPowerController(self.entity)
