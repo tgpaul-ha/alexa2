@@ -437,11 +437,11 @@ class AlexaCooking(AlexaCapability):
         """Return configuration object.
         TODO
         """
-#        configuration = {}
-#        configuration["supportsRemoteStart"] = False
-#        configuration["supportedCookingModes"] = ["REHEAT"]
+        configuration = {}
+        configuration["supportsRemoteStart"] = False
+        configuration["supportedCookingModes"] = ["REHEAT"]
 
-#        return configuration
+        return configuration
     
 class AlexaCookingTimeController(AlexaCapability):
     """Implements Alexa.Cooking.TimeController.
@@ -492,7 +492,7 @@ class AlexaCookingTimeController(AlexaCapability):
         """
         configuration = {}
         configuration["supportsRemoteStart"] = True
-        configuration["supportedCookingModes"] = ["REHEAT"]
+        configuration["supportedCookingModes"] = [{"value": "REHEAT"}]
 
         return configuration
 
