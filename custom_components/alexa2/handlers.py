@@ -76,6 +76,43 @@ _LOGGER = logging.getLogger(__name__)
 HANDLERS = Registry()  # type: ignore[var-annotated]
 
 
+def parse_duration(iso_duration):
+    """Parses an ISO 8601 duration string into a datetime.timedelta instance.
+    Args:
+        iso_duration: an ISO 8601 duration string.
+    Returns:
+        a datetime.timedelta instance
+    """
+    m = re.match(r'^P(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)D)?T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:.\d+)?)S)?$',
+        iso_duration)
+    if m is None:
+        raise ValueError("invalid ISO 8601 duration string")
+
+    # todo throw error if it contains days?
+    
+    days = 0
+    hours = 0
+    minutes = 0
+    seconds = 0.0
+
+    # Years and months are not being utilized here, as there is not enough 
+    # information provided to determine which year and which month.
+    # Python's time_delta class stores durations as days, seconds and
+    # microseconds internally, and therefore we'd have to 
+    # convert parsed years and months to specific number of days.
+
+    if m[3]:
+        days = int(m[3])
+    if m[4]:
+        hours = int(m[4])
+    if m[5]:
+        minutes = int(m[5])
+    if m[6]:
+        seconds = float(m[6])
+
+    return "{0:2d}:{1:2d}:{2:.f}".format(hours, minutes, seconds)
+
+
 @HANDLERS.register(("Alexa.Discovery", "Discover"))
 async def async_api_discovery(hass, config, directive, context):
     """Create a API formatted discovery response.
@@ -1504,7 +1541,7 @@ async def async_api_cook_by_time(hass, config, directive, context):
     """todo."""
     entity = directive.entity
     duration = directive.payload["cookTime"] # todo parse iso8601 duration
-    data = {ATTR_ENTITY_ID: entity.entity_id, "duration": duration}
+    data = {ATTR_ENTITY_ID: entity.entity_id, "duration": parse_duration(duration)}
 
     _LOGGER.info("data: %s", data)
         
