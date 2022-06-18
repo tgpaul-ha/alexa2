@@ -111,39 +111,7 @@ def parse_iso_duration(iso_duration):
     if m[6]:
         seconds = float(m[6])
 
-    return "{0:2d}:{1:02d}:{2:f}".format(hours, minutes, seconds)
-
-
-def parse_hhmmss_duration(hhmmss_duration):
-    """Parses an ISO 8601 duration string into a datetime.timedelta instance.
-    Args:
-        iso_duration: an ISO 8601 duration string.
-    Returns:
-        a datetime.timedelta instance
-    """
-    m = regex.match(r'^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:.\d+)?)S)?$',
-        iso_duration)
-    if m is None:
-        raise ValueError("invalid ISO 8601 duration string")
-
-    hours = 0
-    minutes = 0
-    seconds = 0.0
-
-    # Years and months are not being utilized here, as there is not enough 
-    # information provided to determine which year and which month.
-    # Python's time_delta class stores durations as days, seconds and
-    # microseconds internally, and therefore we'd have to 
-    # convert parsed years and months to specific number of days.
-
-    if m[1]:
-        hours = int(m[1])
-    if m[2]:
-        minutes = int(m[2])
-    if m[3]:
-        seconds = float(m[3])
-
-    return "{0:2d}:{1:02d}:{2:f}".format(hours, minutes, seconds)
+    return "{0:2d}:{1:02d}:{2:02f}".format(hours, minutes, seconds)
 
 
 @HANDLERS.register(("Alexa.Discovery", "Discover"))
