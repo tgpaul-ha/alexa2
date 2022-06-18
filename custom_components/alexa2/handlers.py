@@ -1,7 +1,7 @@
 """Alexa message handlers."""
 import logging
 import math
-import re
+import re as regex
 
 from homeassistant import core as ha
 from homeassistant.components import (
@@ -84,7 +84,7 @@ def parse_duration(iso_duration):
     Returns:
         a datetime.timedelta instance
     """
-    m = re.match(r'^P(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)D)?T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:.\d+)?)S)?$',
+    m = regex.match(r'^P(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)D)?T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:.\d+)?)S)?$',
         iso_duration)
     if m is None:
         raise ValueError("invalid ISO 8601 duration string")
