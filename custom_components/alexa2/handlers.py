@@ -1498,3 +1498,27 @@ async def async_api_initialize_camera_stream(hass, config, directive, context):
     return directive.response(
         name="Response", namespace="Alexa.CameraStreamController", payload=payload
     )
+
+@HANDLERS.register(("Alexa.Cooking.TimeController", "CookByTime"))
+async def async_api_cook_by_time(hass, config, directive, context):
+    """todo."""
+    entity = directive.entity
+    duration = directive.payload["cookTime"] # todo parse iso8601 duration
+    data = {ATTR_ENTITY_ID: entity.entity_id, "duration": duration}
+
+    if entity.domain == timer.DOMAIN:
+        service = timer.SERVICE_START
+
+    else:
+        msg = "Entity does not support directive"
+        raise AlexaInvalidDirectiveError(msg)
+
+    await hass.services.async_call(
+        entity.domain,
+        service,
+        data,
+        blocking=False,
+        context=context,
+    )
+
+    return directive.response()
