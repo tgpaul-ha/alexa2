@@ -1506,6 +1506,8 @@ async def async_api_cook_by_time(hass, config, directive, context):
     duration = directive.payload["cookTime"] # todo parse iso8601 duration
     data = {ATTR_ENTITY_ID: entity.entity_id, "duration": duration}
 
+    _LOGGER.info("data: %s", data)
+        
     if entity.domain == timer.DOMAIN:
         service = timer.SERVICE_START
 
@@ -1513,6 +1515,8 @@ async def async_api_cook_by_time(hass, config, directive, context):
         msg = "Entity does not support directive"
         raise AlexaInvalidDirectiveError(msg)
 
+    _LOGGER.info("after else")
+        
     await hass.services.async_call(
         entity.domain,
         service,
