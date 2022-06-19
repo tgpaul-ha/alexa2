@@ -431,8 +431,8 @@ class AlexaCooking(AlexaCapability):
         if name != "cookingTimeInterval":
             raise UnsupportedProperty(name)
         
-        return "PT4M15S"
-    
+        self.entity.attributes["duration"]
+
     def configuration(self):
         """Return configuration object.
         TODO
