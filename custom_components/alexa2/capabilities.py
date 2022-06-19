@@ -79,7 +79,7 @@ def parse_hhmmss_duration(hhmmss_duration):
 
     hours = int(m[1])
     minutes = int(m[2])
-    seconds = float(m[3])
+    seconds = int(m[3])
 
     iso = "PT"
     if hours > 0:
