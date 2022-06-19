@@ -73,7 +73,7 @@ def parse_hhmmss_duration(hhmmss_duration):
         a datetime.timedelta instance
     """
     m = regex.match(r'^(?:(\d+):)(?:(\d+):)(?:(\d+(?:.\d+)?))$',
-        iso_duration)
+        hhmmss_duration)
     if m is None:
         raise ValueError("invalid HHMMSS duration string")
 
