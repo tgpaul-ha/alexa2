@@ -72,6 +72,9 @@ def parse_hhmmss_duration(hhmmss_duration):
     Returns:
         a datetime.timedelta instance
     """
+    
+    _LOGGER.warning("here")
+        
     m = regex.match(r'^(?:(\d+):)(?:(\d+):)(?:(\d+(?:.\d+)?))$',
         hhmmss_duration)
     if m is None:
@@ -89,7 +92,7 @@ def parse_hhmmss_duration(hhmmss_duration):
     if seconds > 0:
         iso += "{0:d}S".format(seconds)
 
-    _LOGGER.info("hhmmss: " + hhmmss_duration + ", iso: " + iso)
+    _LOGGER.warning("hhmmss: " + hhmmss_duration + ", iso: " + iso)
         
     return iso
 
@@ -462,7 +465,7 @@ class AlexaCooking(AlexaCapability):
         if name != "cookingTimeInterval":
             raise UnsupportedProperty(name)
         
-        _LOGGER.info("cookingduration: " + self.entity.attributes["duration"])
+        _LOGGER.warning("cookingduration: " + self.entity.attributes["duration"])
         
         return parse_hhmmss_duration(self.entity.attributes["duration"])
 
@@ -517,7 +520,7 @@ class AlexaCookingTimeController(AlexaCapability):
         if name != "requestedCookTime":
             raise UnsupportedProperty(name)
         
-        _LOGGER.info("cookingtcduration: " + self.entity.attributes["duration"])
+        _LOGGER.warning("cookingtcduration: " + self.entity.attributes["duration"])
         
         # todo what if its not running?
         return parse_hhmmss_duration(self.entity.attributes["duration"])
