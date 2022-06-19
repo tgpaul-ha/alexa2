@@ -484,7 +484,8 @@ class AlexaCookingTimeController(AlexaCapability):
         if name != "requestedCookTime":
             raise UnsupportedProperty(name)
         
-        return "PT3M15S"
+        # todo what if its not running?
+        return self.entity.attributes["duration"]
 
     
     def configuration(self):
