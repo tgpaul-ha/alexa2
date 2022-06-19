@@ -63,6 +63,34 @@ from .resources import (
 _LOGGER = logging.getLogger(__name__)
 
 
+#todo technically minutes and seconds arent required?
+def parse_hhmmss_duration(hhmmss_duration):
+    """Parses an ISO 8601 duration string into a datetime.timedelta instance.
+    Args:
+        iso_duration: an ISO 8601 duration string.
+    Returns:
+        a datetime.timedelta instance
+    """
+    m = regex.match(r'^(?:(\d+):)(?:(\d+):)(?:(\d+(?:.\d+)?))$',
+        iso_duration)
+    if m is None:
+        raise ValueError("invalid HHMMSS duration string")
+
+    hours = int(m[1])
+    minutes = int(m[2])
+    seconds = float(m[3])
+
+    iso = "PT"
+    if hours > 0
+        iso += "{0:d}H".format(hours)
+    if minutes > 0
+        iso += "{0:d}M".format(minutes)
+    if seconds > 0
+        iso += "{0:d}S".format(seconds)
+
+    return iso
+
+
 class AlexaCapability:
     """Base class for Alexa capability interfaces.
 
@@ -431,7 +459,7 @@ class AlexaCooking(AlexaCapability):
         if name != "cookingTimeInterval":
             raise UnsupportedProperty(name)
         
-        self.entity.attributes["duration"]
+        return parse_hhmmss_duration(self.entity.attributes["duration"])
 
     def configuration(self):
         """Return configuration object.
@@ -485,7 +513,7 @@ class AlexaCookingTimeController(AlexaCapability):
             raise UnsupportedProperty(name)
         
         # todo what if its not running?
-        return self.entity.attributes["duration"]
+        return parse_hhmmss_duration(self.entity.attributes["duration"])
 
     
     def configuration(self):
