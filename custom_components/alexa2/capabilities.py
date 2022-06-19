@@ -83,11 +83,11 @@ def parse_hhmmss_duration(hhmmss_duration):
 
     iso = "PT"
     if hours > 0:
-        iso += "{0:d}H".format(hours)
+        iso += "{0:2d}H".format(hours)
     if minutes > 0:
-        iso += "{0:d}M".format(minutes)
+        iso += "{0:2d}M".format(minutes)
     if seconds > 0:
-        iso += "{0:d}S".format(seconds)
+        iso += "{0:2d}S".format(seconds)
 
     _LOGGER.info("hhmmss: " + hhmmss_duration + ", iso: " + iso)
         
