@@ -2,6 +2,7 @@
 import logging
 import math
 import re as regex
+import time
 
 from homeassistant import core as ha
 from homeassistant.components import (
@@ -1563,4 +1564,6 @@ async def async_api_cook_by_time(hass, config, directive, context):
         context=context,
     )
 
+    time.sleep(1)
+    
     return directive.response()
