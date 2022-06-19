@@ -109,9 +109,9 @@ def parse_iso_duration(iso_duration):
     if m[5]:
         minutes = int(m[5])
     if m[6]:
-        seconds = float(m[6])
+        seconds = int(m[6])
 
-    return "{0:2d}:{1:02d}:{2:02f}".format(hours, minutes, seconds)
+    return "{0:02d}:{1:02d}:{2:02d}".format(hours, minutes, seconds)
 
 
 @HANDLERS.register(("Alexa.Discovery", "Discover"))
