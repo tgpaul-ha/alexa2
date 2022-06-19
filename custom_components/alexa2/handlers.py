@@ -94,7 +94,7 @@ def parse_iso_duration(iso_duration):
     days = 0
     hours = 0
     minutes = 0
-    seconds = 0.0
+    seconds = 0
 
     # Years and months are not being utilized here, as there is not enough 
     # information provided to determine which year and which month.
