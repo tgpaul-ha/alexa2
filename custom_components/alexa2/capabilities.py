@@ -89,6 +89,8 @@ def parse_hhmmss_duration(hhmmss_duration):
     if seconds > 0:
         iso += "{0:d}S".format(seconds)
 
+    logger.info("hhmmss: " + hhmmss_duration + ", iso: " + iso)
+        
     return iso
 
 
@@ -512,6 +514,8 @@ class AlexaCookingTimeController(AlexaCapability):
         """Read and return a property."""
         if name != "requestedCookTime":
             raise UnsupportedProperty(name)
+        
+        logger.info("duration: " + self.entity.attributes["duration"])
         
         # todo what if its not running?
         return parse_hhmmss_duration(self.entity.attributes["duration"])
