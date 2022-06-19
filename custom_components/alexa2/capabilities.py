@@ -462,6 +462,8 @@ class AlexaCooking(AlexaCapability):
         if name != "cookingTimeInterval":
             raise UnsupportedProperty(name)
         
+        _LOGGER.info("cookingduration: " + self.entity.attributes["duration"])
+        
         return parse_hhmmss_duration(self.entity.attributes["duration"])
 
     def configuration(self):
@@ -515,7 +517,7 @@ class AlexaCookingTimeController(AlexaCapability):
         if name != "requestedCookTime":
             raise UnsupportedProperty(name)
         
-        _LOGGER.info("duration: " + self.entity.attributes["duration"])
+        _LOGGER.info("cookingtcduration: " + self.entity.attributes["duration"])
         
         # todo what if its not running?
         return parse_hhmmss_duration(self.entity.attributes["duration"])
