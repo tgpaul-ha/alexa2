@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import logging
+import re as regex
 
 from homeassistant.components import (
     cover,
