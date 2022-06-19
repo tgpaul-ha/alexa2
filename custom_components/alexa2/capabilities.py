@@ -81,11 +81,11 @@ def parse_hhmmss_duration(hhmmss_duration):
     seconds = float(m[3])
 
     iso = "PT"
-    if hours > 0
+    if hours > 0:
         iso += "{0:d}H".format(hours)
-    if minutes > 0
+    if minutes > 0:
         iso += "{0:d}M".format(minutes)
-    if seconds > 0
+    if seconds > 0:
         iso += "{0:d}S".format(seconds)
 
     return iso
