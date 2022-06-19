@@ -451,7 +451,7 @@ class AlexaCooking(AlexaCapability):
 
     def properties_proactively_reported(self):
         """Return True if properties asynchronously reported."""
-        return True
+        return False
 
     def properties_retrievable(self):
         """Return True if properties can be retrieved."""
@@ -504,7 +504,7 @@ class AlexaCookingTimeController(AlexaCapability):
 
     def properties_proactively_reported(self):
         """Return True if properties asynchronously reported."""
-        return True
+        return False
 
     def properties_retrievable(self):
         """Return True if properties can be retrieved."""
