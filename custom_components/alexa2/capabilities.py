@@ -75,14 +75,21 @@ def parse_hhmmss_duration(hhmmss_duration):
     
     _LOGGER.warning("here %s", "1")
 
-    m = regex.match(r'^(?:(\d+):)(?:(\d+):)(?:(\d+(?:.\d+)?))$',
+    m = regex.match(r'^(?:(\d+):)(?:(\d+):)?(?:(\d+(?:.\d+)?))$',
         hhmmss_duration)
     if m is None:
         raise ValueError("invalid HHMMSS duration string")
 
-    hours = int(m[1])
-    minutes = int(m[2])
-    seconds = int(m[3])
+    hours = 0
+    minutes = 0
+    seconds = 0
+
+    if m[1]:
+      hours = int(m[1])
+    if m[2]:
+      minutes = int(m[2])
+    if m[3]:
+      seconds = int(m[3])
 
     iso = "PT"
     if hours > 0:
