@@ -1,7 +1,7 @@
 """Alexa capabilities."""
 from __future__ import annotations
 
-import logging
+import logging as lg
 import re as regex
 
 from homeassistant.components import (
@@ -61,7 +61,7 @@ from .resources import (
     AlexaSemantics,
 )
 
-_LOGGER = logging.getLogger(__name__)
+_LOGGER = lg.getLogger(__name__)
 
 
 #todo technically minutes and seconds arent required?
