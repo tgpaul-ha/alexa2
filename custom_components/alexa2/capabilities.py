@@ -61,7 +61,7 @@ from .resources import (
     AlexaSemantics,
 )
 
-_LOGGER = lg.getLogger(__name__)
+_LOGGER = lg.getLogger("custom_components.alexa2.capabilities")
 
 
 #todo technically minutes and seconds arent required?
